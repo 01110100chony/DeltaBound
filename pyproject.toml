@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "angel-market"
+version = "0.1.0"
+description = "MVP local e auditavel de suporte a decisoes financeiras para startups."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy==2.4.4",
+    "pandas==2.3.3",
+    "streamlit==1.63.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1"]
+
+[project.scripts]
+angel-market = "angel_market.ui.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/angel_market"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
